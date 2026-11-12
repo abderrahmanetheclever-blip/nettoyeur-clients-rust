@@ -1,0 +1,26 @@
+name: Fabriquer Logiciel Windows
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Récupérer le code
+      uses: actions/checkout@v4
+
+    - name: Installer Rust sur le serveur GitHub
+      uses: dtolnay/rust-toolchain@stable
+
+    - name: Compiler le fichier EXE
+      run: cargo build --release
+
+    - name: Préparer le téléchargement
+      uses: actions/upload-artifact@v4
+      with:
+        name: Nettoyeur-Clients-Pro-Windows
+        path: target/release/nettoyeur_clients_pro.exe
