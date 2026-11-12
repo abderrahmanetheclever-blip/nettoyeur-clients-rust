@@ -1,0 +1,6 @@
+[package]
+name = "nettoyeur_clients_pro"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
